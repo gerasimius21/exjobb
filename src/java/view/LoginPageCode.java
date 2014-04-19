@@ -1,12 +1,12 @@
 package view;
 
-
 import java.io.IOException;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -40,50 +40,75 @@ public class LoginPageCode implements Serializable {
                 = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         String userName = (String) session.getAttribute("FACEBOOK_FirstName");
         if (userName != null) {
-            return "First Name:" + userName;
-        } else {
-            return "";
-        }
-    }
-    
-        public String getUserFromSessionLastName() {
-        HttpSession session
-                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        String userName = (String) session.getAttribute("FACEBOOK_LastName");
-        if (userName != null) {
-            return "Last Name:" + userName;
-        } else {
-            return "";
-        }
-    }
-        
-            public String getUserFromSessionID() {
-        HttpSession session
-                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        String userName = (String) session.getAttribute("FACEBOOK_ID");
-        if (userName != null) {
-            return "ID:" + userName;
-        } else {
-            return "";
-        }
-    }
-            
-                public String getUserFromSessionEmail() {
-        HttpSession session
-                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        String userName = (String) session.getAttribute("FACEBOOK_Email");
-        if (userName != null) {
-            return "E-mail:" + userName;
+            return userName;
         } else {
             return "";
         }
     }
 
-    public String logout() throws IOException {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        session.invalidate();
-        return "";
+    public String getUserFromSessionLastName() {
+        HttpSession session
+                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        String userName = (String) session.getAttribute("FACEBOOK_LastName");
+        if (userName != null) {
+            return userName;
+        } else {
+            return "";
+        }
+    }
+
+    public String getUserFromSessionID() {
+        HttpSession session
+                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        String userName = (String) session.getAttribute("FACEBOOK_ID");
+        if (userName != null) {
+            return userName;
+        } else {
+            return "";
+        }
+    }
+
+    public String getUserFromSessionEmail() {
+        HttpSession session
+                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        String userName = (String) session.getAttribute("FACEBOOK_Email");
+        if (userName != null) {
+            return userName;
+        } else {
+            return "";
+        }
+    }
+
+    public boolean isLoggedIn() {
+        boolean ret;
+        HttpSession session
+                = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        String userName = (String) session.getAttribute("FACEBOOK_ID");
+
+        if (userName == null) {
+            ret = true;
+        } else {
+            ret = false;
+        }
+
+        return ret;
+    }
+    
+    public String getWelcomeLine(){
         
+        String ret = "Welcome " + getUserFromSessionFirstName() + " " + getUserFromSessionLastName() + ", logged in as " + getUserFromSessionEmail();
+        
+        return ret;
+    }
+
+    public String logout() throws IOException {
+        
+        String s ="https://www.facebook.com/logout.php?access_token=ACCESS_TOKEN&confirm=1&next=REDIRECT";
+        
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        session = null;
+        return "login";
+
     }
 
 }

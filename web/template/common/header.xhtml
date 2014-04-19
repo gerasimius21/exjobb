@@ -12,17 +12,38 @@
         <ui:composition>
 
 
-            <div style="margin: 0 auto; height: 180px; width: 960px; position: relative; background-color: #dadada;"> 
+            <div style="height: 180px; width: 960px; background-color: #dadada;">
 
-                <div style="position: fixed;">
-                    <p:menu styleClass="ui-menubar" style="width: 954px;">
-                        <p:menuitem value="Home" url="/ui/tabMenu.jsf"/> 
-                        <p:menuitem value="Overview" url="/ui/tabMenu.jsf"/>  
-                        <p:menuitem value="Demos" url="/ui/tabMenuDemos.jsf"/>  
-                        <p:menuitem value="Documentation" url="/ui/tabMenuDocumentation.jsf"/>  
-                        <p:menuitem value="Support" url="/ui/tabMenuSupport.jsf"/>  
-                        <p:menuitem value="Social" url="/ui/tabMenuSocial.jsf"/>  
-                    </p:menu>  
+
+
+
+                <div style="position: fixed; z-index: 21">
+                    <div style="position: absolute; z-index: 10">
+                        <p:menu styleClass="ui-menubar" style="width: 954px;">
+                            <p:menuitem value="Home" url="./index.jsf"/> 
+                            <p:menuitem value="Overview" url="#"/>
+                            <p:menuitem value="Player View Test" url="./playerviewtest.jsf"/>
+                            <p:menuitem value="Demos" url="#"/>  
+                            <p:menuitem value="Documentation" url="#"/>  
+                            <p:menuitem value="Support" url="#"/>  
+                            <p:menuitem value="Social" url="#"/>
+
+                        </p:menu>
+                    </div>
+                    <div style="position: absolute; z-index: 20; padding-top: 5px; left: 866px;">
+                        <h:form id="loginForm">
+
+                            <p:button rendered="#{lp.loggedIn}" style="background-image: url(images/fblogin.png); width: 87px; height: 21px" value=" " href="#{lp.facebookUrlAuth}">
+                            </p:button>
+
+                            <h:commandButton rendered="#{not lp.loggedIn}" value="Facebook Logout" action="#{lp.logout()}" style=" width: 87px; height: 21px">
+</h:commandButton>
+                        </h:form>
+
+                    </div>
+                    <div style="position: relative; display: inline; width: 986px; z-index: 10; top: 10px; left:260%;">
+                        <h:outputText rendered="#{not lp.loggedIn}" value="#{lp.welcomeLine}"></h:outputText>
+                    </div>
                 </div>
 
             </div>

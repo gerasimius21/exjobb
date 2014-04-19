@@ -55,7 +55,7 @@ public class SecurityServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/facebookError.html");
                 return;
             }
-            response.sendRedirect(request.getContextPath() + "/login.jsf");
+            response.sendRedirect(request.getContextPath() + "/index.jsf");
         } else {
             System.err.println("CSRF protection validation");
         }

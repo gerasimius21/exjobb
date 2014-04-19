@@ -5,7 +5,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 version="3.0">
   <display-name>TEST</display-name>
   <welcome-file-list>
-    <welcome-file>playerviewtest.jsf</welcome-file>
+    <welcome-file>index.jsf</welcome-file>
   </welcome-file-list>
 <!--   <servlet> -->
 <!--     <servlet-name>SecurityServlet</servlet-name> -->
