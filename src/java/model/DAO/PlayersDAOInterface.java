@@ -17,7 +17,7 @@ public interface PlayersDAOInterface {
     public void addPlayer(Players player);
     public void removePlayer(Players player);
     public Players findByID(int id);
-//    public Players findByClub(String club);
+    public List<Players> findByClub(String club);
     public List<Players> findAll();
 
 }

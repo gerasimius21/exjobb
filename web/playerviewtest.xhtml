@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
     </h:head>
     <h:body>
@@ -12,29 +13,37 @@
 
             <ui:define name="content">
                 <h:form>  
-                    <p:dataTable var="player" value="#{tableBean.carsSmall}">  
-                        <p:column headerText="Player">  
-                            <h:outputText value="#{car.model}" />  
+                    <p:dataTable id="clubTable" var="player" value="#{clubBean.players}" rowKey="#{player.jerseynumber}" selectionMode="single" 
+                                 selection="#{clubBean.selectedPlayer}"  tableStyle="width:auto" >  
+
+                        <!--  <p:ajax event="rowSelect" update=":form:display" oncomplete="appDialog.show()" />  -->
+                       
+                        <p:column headerText="Jersey">  
+                            <h:outputText value="#{player.jerseynumber}" />  
                         </p:column>  
 
+                        <p:column headerText="Player">  
+                            <h:outputText value="#{player.playername}" />  
+                        </p:column>                         
+
                         <p:column headerText="Position">  
-                            <h:outputText value="#{car.year}" />  
+                            <h:outputText value="#{player.position}" />  
                         </p:column>  
 
                         <p:column headerText="Games played">  
-                            <h:outputText value="#{car.manufacturer}" />  
+                            <h:outputText value="#{player.gamesplayed}" />  
                         </p:column>  
 
                         <p:column headerText="Goals scored">  
-                            <h:outputText value="#{car.color}" />  
+                            <h:outputText value="#{player.goalsscored}" />  
                         </p:column>  
                         <p:column headerText="Yellow cards">  
-                            <h:outputText value="#{car.color}" />  
+                            <h:outputText value="#{player.yellowcards}" />  
                         </p:column>  
                         <p:column headerText="Red cards">  
-                            <h:outputText value="#{car.color}" />  
+                            <h:outputText value="#{player.redcards}" />  
                         </p:column>  
-                    </p:dataTable>  
+                    </p:dataTable>                    
                 </h:form> 
             </ui:define>
 

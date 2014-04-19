@@ -10,7 +10,6 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.Clubs;
 import model.Players;
@@ -41,13 +40,16 @@ public class PlayersDAO implements PlayersDAOInterface {
         return em.find(Players.class, id);
     }
     
+    @Override
     public List<Players> findByClub(String clubname) {
         TypedQuery getClubByName = em.createNamedQuery("Clubs.findByClubname", Clubs.class);
         getClubByName.setParameter("clubname", clubname);
         List<Clubs> clubs = getClubByName.getResultList();
         
-        int clubId = clubs.get(1).getIdclubs();
-        return em.createQuery("SELECT p FROM Players p WHERE p.clubid LIKE :club").setParameter("clubId", clubId).getResultList();
+        System.out.println(clubs.size());
+        int clubId = clubs.get(0).getIdclubs();
+        System.out.println(clubId);
+        return em.createQuery("SELECT p FROM Players p WHERE p.clubid.idclubs = ?1").setParameter(1, clubId).getResultList();
     }
 
     @Override
