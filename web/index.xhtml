@@ -3,19 +3,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
-<h:body>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
 
-    <ui:composition template="template/common/layout.xhtml">
+    </h:head>
+    <h:body>
 
-        <ui:define name="content">
+        <ui:composition template="template/common/layout.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">  
+
+
+                    <div style="height: 900px">
+                        <div>
+                            <p:breadCrumb>
+                                <p:menuitem value="Countries" url="#" />  
+                                <p:menuitem value="Spain" url="#" />  
+                                <p:menuitem value="F.C. Barcelona" url="#" />  
+                                <p:menuitem value="Squad" url="#" />  
+                                <p:menuitem value="Lionel Messi" url="#" />  
+                            </p:breadCrumb>
+                        </div>
+
+
+                        <div style="right: 380px; position: relative; width: 200px">
+
+                            <h:form>  
+
+                                <p:panelMenu style="width:200px">    
+
+                                    <p:submenu label="Country">
+                                        <c:forEach var="item" items="#{cart.items}">
+
+                                        </c:forEach>
+                                        <p:submenu label="League">
+                                            <p:submenu label="Clubs">
+                                                <p:menuitem value="Chelse"/>
+                                            </p:submenu>
+                                        </p:submenu>
+
+                                    </p:submenu>  
+
+                                </p:panelMenu>  
+
+                            </h:form>
+
+
+                        </div>
+                    </div>
+
+
+                </h:form> 
+
+            </ui:define>
             <h1>Login Page</h1>
-
-        </ui:define>
-
-    </ui:composition>
-</h:body>
+        </ui:composition>
+    </h:body>
 </html>
 
