@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import model.Clubs;
 import model.Players;
 
 @Named("clubBean")
@@ -22,15 +23,31 @@ public class PlayerViewTest implements Serializable {
     private Controller controller;
     private List<Players> clubPlayers; 
     private Players selectedPlayer;
+    
+    private List<Clubs> clubs;
+    private Clubs selectedClub;
       
     @PostConstruct
-    public void populateClubs() {
+    public void init() {
+        clubs = controller.getClubs().findAll();
         clubPlayers = controller.getPlayers().findByClub("Chelsea");
+    }
+    
+    public List<Clubs> getClubs() {
+        return clubs;
     }
       
     public List<Players> getPlayers() {  
         return clubPlayers;  
-    }  
+    } 
+    
+    public Clubs getSelectedClub() {
+        return selectedClub;
+    }
+    
+    public void setSelectedClub(Clubs selectedClub) {
+        this.selectedClub = selectedClub;
+    }
     
     public Players getSelectedPlayer() {
         return selectedPlayer;

@@ -12,17 +12,16 @@
         <ui:composition template="template/common/layout.xhtml">
 
             <ui:define name="content">
-                <h:form>  
+                <h:form id="form">  
                     <p:dataTable id="clubTable" var="player" value="#{clubBean.players}" rowKey="#{player.jerseynumber}" selectionMode="single" 
                                  selection="#{clubBean.selectedPlayer}"  tableStyle="width:auto" >  
 
-                        <!--  <p:ajax event="rowSelect" update=":form:display" oncomplete="appDialog.show()" />  -->
-                       
-                        <p:column headerText="Jersey">  
-                            <h:outputText value="#{player.jerseynumber}" />  
-                        </p:column>  
+                        <p:ajax event="rowSelect" update=":form:display" oncomplete="clubDialog.show()" /> 
+
 
                         <p:column headerText="Player">  
+                            <h:outputText value="#{player.jerseynumber}" />
+                            <h:outputText value=". "/>
                             <h:outputText value="#{player.playername}" />  
                         </p:column>                         
 
@@ -43,7 +42,28 @@
                         <p:column headerText="Red cards">  
                             <h:outputText value="#{player.redcards}" />  
                         </p:column>  
-                    </p:dataTable>                    
+                    </p:dataTable>  
+
+                    <p:dialog header="Player transfer" widgetVar="clubDialog" resizable="false"  
+                              width="200" showEffect="explode" hideEffect="explode">  
+
+                        <h:panelGrid id="display" columns="2" cellpadding="4">   
+
+                            <h:outputText value="Player:" />  
+                            <h:outputText value="#{clubBean.selectedPlayer.playername}" id="name"/>  
+
+                            <h:outputText value="to club:" />  
+                            <p:selectOneMenu value="#{clubBean.selectedClub}">
+                                <f:selectItems value="#{clubBean.clubs}" var="currentClub" itemValue="#{currentClub.clubname}" itemLabel="#{currentClub.clubname}"/>
+                            </p:selectOneMenu>
+
+                            <h:outputText value="Amount:" />  
+                            <h:inputText size="10" />  
+                        </h:panelGrid>  
+                        <h:commandButton value="Submit donation">
+
+                        </h:commandButton>
+                    </p:dialog> 
                 </h:form> 
             </ui:define>
 
