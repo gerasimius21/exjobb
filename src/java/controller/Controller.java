@@ -38,12 +38,14 @@ public class Controller {
         System.out.println("Svemir da baws!");
         return player;
     }
+
     
     public ClubsDAO getClubs() {
         return club;
         
     }
     
+
     public List getAllClubs() {
         return club.findAll();
     }

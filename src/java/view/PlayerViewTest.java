@@ -8,9 +8,12 @@ package view;
 import controller.Controller;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import model.Clubs;
 import model.Players;
@@ -27,6 +30,21 @@ public class PlayerViewTest implements Serializable {
     private List<Clubs> clubs;
     private Clubs selectedClub;
       
+    private String club;
+
+    public String getClub() {
+        return club;
+    }
+
+    public void setClub(String club) {
+        this.club = club;
+    }
+
+    public void attrListener(ActionEvent event) {
+
+        club = (String) event.getComponent().getAttributes().get("action");
+
+    }
     @PostConstruct
     public void init() {
         clubs = controller.getClubs().findAll();
