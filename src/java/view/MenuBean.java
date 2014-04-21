@@ -6,10 +6,12 @@
 package view;
 
 import controller.Controller;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import model.Clubs;
@@ -19,12 +21,11 @@ import model.Clubs;
  * @author Semir
  */
 @Named("menu")
-@ApplicationScoped
-public class MenuBean {
+@SessionScoped
+public class MenuBean implements Serializable{
 
     @EJB
     Controller controller;
-    List<Clubs> clubs = new ArrayList<>();
 
     private String club;
 
