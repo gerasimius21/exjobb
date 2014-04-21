@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;  
-  
+package view;
+
 import controller.Controller;
-import java.io.Serializable;  
-import java.util.List;  
+import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -17,11 +17,11 @@ import model.Players;
 
 @Named("clubBean")
 @SessionScoped
-public class PlayerViewTest implements Serializable {  
-      
+public class PlayerViewTest implements Serializable {
+
     @EJB
     private Controller controller;
-    private List<Players> clubPlayers; 
+    private List<Players> clubPlayers;
     private Players selectedPlayer;
     
     private List<Clubs> clubs;
@@ -52,9 +52,9 @@ public class PlayerViewTest implements Serializable {
     public Players getSelectedPlayer() {
         return selectedPlayer;
     }
-    
+
     public void setSelectedPlayer(Players selectedPlayer) {
         this.selectedPlayer = selectedPlayer;
     }
-      
-}  
+
+}
