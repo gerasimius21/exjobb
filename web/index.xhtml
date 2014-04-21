@@ -40,7 +40,7 @@
                                         <p:submenu label="League">
                                             <p:submenu label="Clubs">
                                                 <c:forEach items="${menu.allClubs}" var="club">
-                                                    <p:menuitem value="#{club.clubname}" outcome="/playerviewtest" actionListener="#{user.attrListener}">
+                                                    <p:menuitem value="#{club.clubname}" outcome="/playerviewtest" actionListener="#{menu.attrListener(event)}">
                                                         <f:attribute name="action" value="#{club.clubname}" />
                                                     </p:menuitem>
                                                 </c:forEach>
