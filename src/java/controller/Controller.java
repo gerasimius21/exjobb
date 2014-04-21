@@ -6,6 +6,7 @@
 
 package controller;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import model.DAO.ClubsDAO;
@@ -36,5 +37,9 @@ public class Controller {
     public PlayersDAO getPlayers() {
         System.out.println("Svemir da baws!");
         return player;
+    }
+
+    public List getAllClubs() {
+        return club.findAll();
     }
 }

@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
 
     </h:head>
@@ -31,16 +32,20 @@
                         <div style="right: 380px; position: relative; width: 200px">
 
                             <h:form>  
-
+                                <p:growl id="messages" autoUpdate="true"/> 
                                 <p:panelMenu style="width:200px">    
 
                                     <p:submenu label="Country">
-                                        <c:forEach var="item" items="#{cart.items}">
 
-                                        </c:forEach>
                                         <p:submenu label="League">
                                             <p:submenu label="Clubs">
-                                                <p:menuitem value="Chelse"/>
+                                                <c:forEach items="${menu.allClubs}" var="club">
+                                                    <p:menuitem value="#{club.clubname}" outcome="/playerviewtest" actionListener="#{user.attrListener}">
+                                                        <f:attribute name="action" value="#{club.clubname}" />
+                                                    </p:menuitem>
+                                                </c:forEach>
+
+
                                             </p:submenu>
                                         </p:submenu>
 
