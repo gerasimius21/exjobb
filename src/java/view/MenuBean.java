@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
 import javax.inject.Named;
 import model.Clubs;
 
@@ -26,6 +27,9 @@ public class MenuBean implements Serializable{
 
     @EJB
     Controller controller;
+    
+    @Inject
+    PlayerViewTest pvt;
 
     private String club;
 
@@ -39,8 +43,9 @@ public class MenuBean implements Serializable{
 
     public void attrListener(ActionEvent event) {
 
-        club = (String) event.getComponent().getAttributes().get("action");
-
+        club = (String) event.getComponent().getAttributes().get("club");
+        System.out.println("Menu bean club:" + club);
+        pvt.setClub(club);
     }
 
     public List<Clubs> getAllClubs() {

@@ -31,6 +31,10 @@ public class PlayerViewTest implements Serializable {
     private List<Clubs> clubs;
     private Clubs selectedClub;
     private String club;
+
+    public void setClub(String club) {
+        this.club = club;
+    }
     
     @Inject
     MenuBean mb;
@@ -38,9 +42,9 @@ public class PlayerViewTest implements Serializable {
     
     @PostConstruct
     public void init() {
-
+        System.out.println("Club: " + mb.getClub());
         clubs = controller.getClubs().findAll();
-        clubPlayers = controller.getPlayers().findByClub(mb.getClub());
+        clubPlayers = controller.getPlayers().findByClub("Liverpool");
     }
     
     public List<Clubs> getClubs() {
