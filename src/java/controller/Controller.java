@@ -45,7 +45,6 @@ public class Controller {
         
     }
     
-
     public List getAllClubs() {
         return club.findAll();
     }
