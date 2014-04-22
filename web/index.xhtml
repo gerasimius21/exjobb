@@ -17,45 +17,44 @@
                 <h:form id="form">  
 
 
-<!--                    <div style="height: 900px">
-                        <div>
-                            <p:breadCrumb>
-                                <p:menuitem value="Countries" url="#" />  
-                                <p:menuitem value="Spain" url="#" />  
-                                <p:menuitem value="F.C. Barcelona" url="#" />  
-                                <p:menuitem value="Squad" url="#" />  
-                                <p:menuitem value="Lionel Messi" url="#" />  
-                            </p:breadCrumb>
-                        </div>-->
+                    <!--                    <div style="height: 900px">
+                                            <div>
+                                                <p:breadCrumb>
+                                                    <p:menuitem value="Countries" url="#" />  
+                                                    <p:menuitem value="Spain" url="#" />  
+                                                    <p:menuitem value="F.C. Barcelona" url="#" />  
+                                                    <p:menuitem value="Squad" url="#" />  
+                                                    <p:menuitem value="Lionel Messi" url="#" />  
+                                                </p:breadCrumb>
+                                            </div>-->
 
 
-                        <div style="right: 380px; position: relative; width: 200px">
+                    <div style="right: 380px; position: relative; width: 200px">
 
 
-                                <p:growl id="messages" autoUpdate="true"/> 
-                                <p:panelMenu style="width:200px">    
+                        <p:growl id="messages" autoUpdate="true"/> 
+                        <p:panelMenu style="width:200px">    
 
-                                    <p:submenu label="Country">
+                            <p:submenu label="Country">
 
-                                        <p:submenu label="League">
-                                            <p:submenu label="Clubs">
-                                                <c:forEach items="#{menu.allClubs}" var="club">
-                                                    <p:menuitem value="#{club.clubname}"  >
-                                                        <f:setPropertyActionListener target="#{menu.club}" value="#{club.clubname}"/>
-                                                    </p:menuitem>
-                                                </c:forEach>
+                                <p:submenu label="League">
+                                    <p:submenu label="Clubs">
+                                        <c:forEach items="#{menu.allClubs}" var="club">
+                                            <p:menuitem value="#{club.clubname}"  >
+                                                <f:setPropertyActionListener target="#{menu.club}" value="#{club.clubname}"/>
+                                            </p:menuitem>
+                                        </c:forEach>
 
-                                            </p:submenu>
-                                        </p:submenu>
+                                    </p:submenu>
+                                </p:submenu>
 
-                                    </p:submenu>  
+                            </p:submenu>  
 
-                                </p:panelMenu> 
+                        </p:panelMenu> 
 
 
-                        </div>
+                    </div>
                     <!--</div>-->
-
 
                 </h:form> 
 
