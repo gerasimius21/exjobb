@@ -8,7 +8,6 @@
     <h:head>
     </h:head>
     <h:body>
-
         <ui:composition template="template/common/layout.xhtml">
 
             <ui:define name="content">
@@ -53,10 +52,10 @@
                             <h:outputText value="#{clubBean.selectedPlayer.playername}" id="name"/>  
 
                             <h:outputText value="to club:" />  
-                            <p:selectOneMenu value="#{clubBean.selectedClub}">
+                            <h:selectOneMenu value="#{clubBean.selectedClub}">
                                 <f:selectItems value="#{clubBean.clubs}" var="currentClub" itemValue="#{currentClub.clubname}" itemLabel="#{currentClub.clubname}"/>
-                            </p:selectOneMenu>
-
+                            </h:selectOneMenu>
+                            
                             <h:outputText value="Amount:" />  
                             <h:inputText size="10" />  
                         </h:panelGrid>  

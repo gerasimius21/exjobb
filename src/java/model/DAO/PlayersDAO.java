@@ -44,10 +44,10 @@ public class PlayersDAO implements PlayersDAOInterface {
     public List<Players> findByClub(String clubname) {
         TypedQuery getClubByName = em.createNamedQuery("Clubs.findByClubname", Clubs.class);
         getClubByName.setParameter("clubname", clubname);
-        List<Clubs> clubs = getClubByName.getResultList();
+        Clubs club = (Clubs)getClubByName.getSingleResult();
         
-        System.out.println(clubs.size());
-        int clubId = clubs.get(0).getIdclubs();
+        System.out.println(club);
+        int clubId = club.getIdclubs();
         System.out.println(clubId);
         return em.createQuery("SELECT p FROM Players p WHERE p.clubid.idclubs = ?1").setParameter(1, clubId).getResultList();
     }

@@ -17,7 +17,7 @@
                 <h:form id="form">  
 
 
-                    <div style="height: 900px">
+<!--                    <div style="height: 900px">
                         <div>
                             <p:breadCrumb>
                                 <p:menuitem value="Countries" url="#" />  
@@ -26,12 +26,12 @@
                                 <p:menuitem value="Squad" url="#" />  
                                 <p:menuitem value="Lionel Messi" url="#" />  
                             </p:breadCrumb>
-                        </div>
+                        </div>-->
 
 
                         <div style="right: 380px; position: relative; width: 200px">
 
-                            <h:form>  
+
                                 <p:growl id="messages" autoUpdate="true"/> 
                                 <p:panelMenu style="width:200px">    
 
@@ -39,25 +39,22 @@
 
                                         <p:submenu label="League">
                                             <p:submenu label="Clubs">
-                                                <c:forEach items="${menu.allClubs}" var="club">
-                                                    <p:menuitem value="#{club.clubname}" outcome="/playerviewtest" actionListener="#{menu.attrListener}">
-                                                        <f:attribute name="club" value="#{club.clubname}" />
+                                                <c:forEach items="#{menu.allClubs}" var="club">
+                                                    <p:menuitem value="#{club.clubname}"  >
+                                                        <f:setPropertyActionListener target="#{menu.club}" value="#{club.clubname}"/>
                                                     </p:menuitem>
                                                 </c:forEach>
-
 
                                             </p:submenu>
                                         </p:submenu>
 
                                     </p:submenu>  
 
-                                </p:panelMenu>  
-
-                            </h:form>
+                                </p:panelMenu> 
 
 
                         </div>
-                    </div>
+                    <!--</div>-->
 
 
                 </h:form> 
